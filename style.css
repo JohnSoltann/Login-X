@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: #000;
+    color: #fff;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: radial-gradient(circle at center, #15202b, #000);
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    padding: 20px;
+    perspective: 1000px;
+}
+
+.login-box {
+    background: rgba(0, 0, 0, 0.8);
+    border-radius: 16px;
+    padding: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    transform-style: preserve-3d;
+    animation: boxAppear 0.6s ease-out;
+}
+
+@keyframes boxAppear {
+    from {
+        opacity: 0;
+        transform: translateY(20px) rotateX(-10deg);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) rotateX(0);
+    }
+}
+
+.logo {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.x-logo {
+    width: 40px;
+    height: 40px;
+    fill: #fff;
+    margin-bottom: 12px;
+    animation: logoSpin 0.8s ease-out;
+}
+
+@keyframes logoSpin {
+    from {
+        transform: rotateY(180deg);
+        opacity: 0;
+    }
+    to {
+        transform: rotateY(0);
+        opacity: 1;
+    }
+}
+
+h1 {
+    font-size: 31px;
+    margin-bottom: 32px;
+    font-weight: 700;
+    text-align: center;
+    background: linear-gradient(to right, #fff, #71767b);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.input-group {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+input {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #333;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: #fff;
+    font-size: 16px;
+    outline: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+input:focus {
+    border-color: #1d9bf0;
+    background-color: rgba(29, 155, 240, 0.1);
+    box-shadow: 0 0 0 4px rgba(29, 155, 240, 0.1);
+}
+
+label {
+    position: absolute;
+    left: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #71767b;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    pointer-events: none;
+    background: transparent;
+    padding: 0 4px;
+}
+
+input:focus + label,
+input:valid + label {
+    top: 0;
+    font-size: 13px;
+    color: #1d9bf0;
+    background-color: #000;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(45deg, #1d9bf0, #1a8cd8);
+    color: #fff;
+    border: none;
+    border-radius: 9999px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 16px;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(29, 155, 240, 0.3);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(29, 155, 240, 0.4);
+    background: linear-gradient(45deg, #1a8cd8, #1d9bf0);
+}
+
+.login-btn:active {
+    transform: translateY(0);
+}
+
+.options {
+    margin-top: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+}
+
+.options a {
+    color: #1d9bf0;
+    text-decoration: none;
+    font-size: 15px;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.options a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: #1d9bf0;
+    transition: width 0.3s ease;
+}
+
+.options a:hover::after {
+    width: 100%;
+}
+
+.divider {
+    color: #71767b;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 10px;
+    }
+    
+    .login-box {
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 24px;
+    }
+    
+    .options {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .divider {
+        display: none;
+    }
+}
+
+/* اضافه کردن افکت موج برای پس‌زمینه */
+.container::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, transparent 0%, rgba(29, 155, 240, 0.03) 100%);
+    animation: pulse 8s infinite;
+    z-index: -1;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+    50% {
+        transform: scale(1.5);
+        opacity: 0.2;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.5;
+    }
+} 
